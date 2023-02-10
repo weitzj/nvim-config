@@ -71,6 +71,8 @@ packer.startup {
       }
     end
 
+    use { "alaviss/nim.nvim", ft = { "nim" } }
+
     -- Python indent (follows the PEP8 style)
     use { "Vimjas/vim-python-pep8-indent", ft = { "python" } }
 
