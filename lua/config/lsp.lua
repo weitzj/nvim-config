@@ -156,6 +156,33 @@ if utils.executable("clangd-15") then
   }
 end
 
+if utils.executable("gopls") then
+  lspconfig.gopls.setup {
+    on_attach = custom_attach,
+    capabilities = capabilities,
+    filetypes = { "go" },
+    flags = {
+      debounce_text_changes = 500,
+    },
+    settings = {
+      gopls = {
+        experimentalPostfixCompletions = true,
+        gofumpt = true,
+	      analyses = {
+          nilness = true,
+          unusedparams = true,
+	        shadow = true,
+          unusedwrite = true,
+          useany = true,
+		     },
+		     staticcheck = true,
+      },
+    },
+  }
+else
+  vim.notify("gopls not found!", vim.log.levels.WARN, { title = "Nvim-config" })
+end
+
 -- set up vim-language-server
 if utils.executable("vim-language-server") then
   lspconfig.vimls.setup {
