@@ -145,7 +145,7 @@ if utils.executable("ltex-ls") then
 }
 end
 
-if utils.executable("clangd") then
+if utils.executable("clangd-15") then
   lspconfig.clangd.setup {
     on_attach = custom_attach,
     capabilities = capabilities,
