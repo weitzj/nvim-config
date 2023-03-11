@@ -179,3 +179,4 @@ set noruler
 
 set cursorline
 set cursorcolumn
+set foldlevelstart=99
