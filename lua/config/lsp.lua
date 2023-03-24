@@ -197,6 +197,19 @@ else
 end
 
 -- set up vim-language-server
+if utils.executable("terraform-ls") then
+  lspconfig.terraformls.setup {
+    on_attach = custom_attach,
+    flags = {
+      debounce_text_changes = 500,
+    },
+    capabilities = capabilities,
+  }
+else
+  vim.notify("terraformls not found", vim.log.levels.WARN, { title = "Nvim-config" })
+end
+
+-- set up vim-language-server
 if utils.executable("vim-language-server") then
   lspconfig.vimls.setup {
     on_attach = custom_attach,
